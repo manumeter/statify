@@ -19,7 +19,9 @@
     "slowprog/composer-copy-file": "^0.2",
     "squizlabs/php_codesniffer": "^3.1",
     "wimg/php-compatibility": "^8.0",
-    "wp-coding-standards/wpcs": "^0.14"
+    "wp-coding-standards/wpcs": "^0.14",
+    "phpunit/phpunit": "*",
+    "brain/monkey": "^2.2.0"
   },
   "repositories": [
     {
@@ -35,12 +37,16 @@
       "@build"
     ],
     "build": [
+      "@test",
       "@cs",
       "@copy-assets",
       "@minify"
     ],
     "copy-assets": [
       "SlowProg\\CopyFile\\ScriptHandler::copy"
+    ],
+    "test": [
+      "phpunit"
     ],
     "cs": [
       "phpcs --standard=phpcs.xml -s"
